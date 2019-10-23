@@ -1,14 +1,12 @@
 package com.idehub.GoogleAnalyticsBridge;
 
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableMap;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
 import java.util.Iterator;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Converts a List to WritableList and Map to WritableList
