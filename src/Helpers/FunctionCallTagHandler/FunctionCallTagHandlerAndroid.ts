@@ -1,5 +1,4 @@
 import { DeviceEventEmitter } from "react-native";
-import { TagManagerBridge } from "../../NativeBridges";
 import { Handler } from "./models";
 
 /*
@@ -13,23 +12,8 @@ import { Handler } from "./models";
 
 const TAG_EVENT_PREFIX = "GTM_FUNCTION_CALL_TAG_";
 
-export default (functionName: string, handler: Handler): Promise<boolean> => {
+export default (functionName: string, handler: Handler): void => {
   const event = TAG_EVENT_PREFIX + functionName;
 
-  return TagManagerBridge.registerFunctionCallTagHandler(functionName).then(
-    () => {
-      DeviceEventEmitter.addListener(event, payload => {
-        try {
-          handler(functionName, payload);
-        } catch (e) {
-          console.error(
-            `Unhandled exception in FunctionCallTag handler: ${e.stack}`,
-            `\nFunction Name: ${functionName}`,
-            `\nPayload: ${JSON.stringify(payload)}`
-          );
-        }
-      });
-      return true;
-    }
-  );
+
 };

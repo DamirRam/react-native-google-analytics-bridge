@@ -1,5 +1,3 @@
-import { NativeEventEmitter } from "react-native";
-import { TagManagerBridge } from "../../NativeBridges";
 import { Handler } from "./models";
 
 /*
@@ -18,45 +16,9 @@ interface Listener {
 }
 
 // Downstream events from native realm
-const functionCallTagEventEmitter = new NativeEventEmitter(TagManagerBridge);
 const listeners: Array<Listener> = [];
 let listenerRegistered = false;
 
-export default (functionName: string, handler: Handler): Promise<boolean> => {
-  if (!listenerRegistered) {
-    // Register a global listener for Function Tag events
-    functionCallTagEventEmitter.addListener(
-      GTM_FUNCTION_CALL_TAG_EVENT,
-      ({ _fn, payload }) => {
-        // Pass on the event to listeners
-        // _fn is basically the same as functionName
-        listeners.forEach(listener => {
-          if (listener.functionName === _fn) {
-            try {
-              handler(_fn, payload);
-            } catch (e) {
-              console.error(
-                `Unhandled exception in FunctionCallTag handler: ${e.stack}`,
-                `\nFunction Name: ${_fn}`,
-                `\nPayload: ${JSON.stringify(payload)}`
-              );
-            }
-          }
-        });
-      }
-    );
+export default (functionName: string, handler: Handler): void => {
 
-    listenerRegistered = true;
-  }
-
-  return TagManagerBridge.registerFunctionCallTagHandler(functionName).then(
-    () => {
-      listeners.push({
-        functionName,
-        handler
-      });
-
-      return true;
-    }
-  );
 };
