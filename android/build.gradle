@@ -53,6 +53,5 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'
     implementation "com.google.android.gms:play-services-analytics:${safeExtGet('googlePlayServicesVersion', '17.0.0')}"
-    implementation "com.google.android.gms:play-services-tagmanager-v4-impl:${safeExtGet('googlePlayServicesVersion', '17.0.0')}"
     implementation 'androidx.core:core:1.1.0'
 }

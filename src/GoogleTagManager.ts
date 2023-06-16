@@ -1,6 +1,4 @@
 import DataLayerEvent from "./models/DataLayerEvent";
-import { TagManagerBridge } from "./NativeBridges";
-import FunctionCallTagHandler from "./Helpers/FunctionCallTagHandler";
 
 /**
  * Can only be used with one container. All functions returns a Promise.
@@ -20,8 +18,8 @@ class GoogleTagManager {
    * @param {string} containerId
    * @returns {Promise<boolean>}
    */
-  static openContainerWithId(containerId: string): Promise<boolean> {
-    return TagManagerBridge.openContainerWithId(containerId);
+  static openContainerWithId(containerId: string): void {
+    //return TagManagerBridge.openContainerWithId(containerId);
   }
 
   /**
@@ -32,8 +30,8 @@ class GoogleTagManager {
    * GoogleTagManager.refreshContainer().then((..) => ..)
    * @returns {Promise<boolean>}
    */
-  static refreshContainer(): Promise<boolean> {
-    return TagManagerBridge.refreshContainer();
+  static refreshContainer(): void {
+    //return TagManagerBridge.refreshContainer();
   }
 
   /**
@@ -42,8 +40,8 @@ class GoogleTagManager {
    * @param {string} key
    * @returns {Promise<boolean>}
    */
-  static boolForKey(key: string): Promise<boolean> {
-    return TagManagerBridge.booleanForKey(key);
+  static boolForKey(key: string): void {
+    //return TagManagerBridge.booleanForKey(key);
   }
 
   /**
@@ -52,8 +50,8 @@ class GoogleTagManager {
    * @param {string} key
    * @returns {Promise<string>}
    */
-  static stringForKey(key: string): Promise<string> {
-    return TagManagerBridge.stringForKey(key);
+  static stringForKey(key: string): void {
+    //return TagManagerBridge.stringForKey(key);
   }
 
   /**
@@ -62,8 +60,8 @@ class GoogleTagManager {
    * @param {string} key
    * @returns {Promise<number>}
    */
-  static doubleForKey(key): Promise<number> {
-    return TagManagerBridge.doubleForKey(key);
+  static doubleForKey(key): void {
+    //return TagManagerBridge.doubleForKey(key);
   }
 
   /**
@@ -76,8 +74,8 @@ class GoogleTagManager {
    * @param {DataLayerEvent} event An Map<String, Object> containing key and value pairs. It must have at least one key "event" with event name
    * @returns {Promise<boolean>}
    */
-  static pushDataLayerEvent(event: DataLayerEvent): Promise<boolean> {
-    return TagManagerBridge.pushDataLayerEvent(event);
+  static pushDataLayerEvent(event: DataLayerEvent): void {
+    //return TagManagerBridge.pushDataLayerEvent(event);
   }
 
   /**
@@ -86,15 +84,15 @@ class GoogleTagManager {
    * @param {Function} handler
    */
   static registerFunctionCallTagHandler(functionName, handler) {
-    return FunctionCallTagHandler(functionName, handler);
+    //return FunctionCallTagHandler(functionName, handler);
   }
 
   /**
    * Sets logger to verbose, default is warning
    * @param {boolean} enabled
    */
-  static setVerboseLoggingEnabled(enabled: boolean): Promise<boolean> {
-    return TagManagerBridge.setVerboseLoggingEnabled(enabled);
+  static setVerboseLoggingEnabled(enabled: boolean): void {
+    //return TagManagerBridge.setVerboseLoggingEnabled(enabled);
   }
 }
 
